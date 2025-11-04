@@ -5,77 +5,200 @@ import Footer from "../../../Footer/footer";
 const products = [
   {
     id: 1,
-    name: "Acme Cowboy Hat",
-    price: 160,
-    image: "/images/hat.jpg",
-    category: "Headwear"
-  },
-  {
-    id: 2,
     name: "Acme Keyboard",
     price: 150,
-    image: "/images/keyboard.jpg",
+    image: "/keyboard.avif",
     category: "Electronics"
   },
   {
-    id: 3,
+    id: 2,
     name: "Acme T-Shirt",
     price: 20,
-    image: "/images/tshirt.jpg",
+    image: "/t-shirt-color-black.avif",
     category: "Shirts"
   },
   {
-    id: 4,
+    id: 3,
     name: "Acme Hoodie",
     price: 50,
-    image: "/images/hoodie.jpg",
+    image: "hoodie-1.avif",
     category: "Hoodies"
+  },
+  {
+    id: 4,
+    name: "Acme Cowboy Hat",
+    price: 160,
+    image: "/cowboy-hat-black-1.avif",
+    category: "Headwear"
   },
   {
     id: 5,
     name: "Acme Circles T-Shirt",
     price: 20,
-    image: "/images/circles-shirt.jpg",
+    image: "/t-shirt-1.avif",
     category: "Shirts"
   },
   {
     id: 6,
     name: "Acme Prism T-Shirt",
     price: 25,
-    image: "/images/prism-shirt.jpg",
+    image: "/t-shirt-spiral-1.avif",
     category: "Shirts"
-  }
+  },
+  {
+    id: 7,
+    name: "Acme Sticker",
+    price: 4,
+    image: "sticker.avif",
+    category: "Stickers"
+  },
+  {
+    id: 8,
+    name: "Acme Mug",
+    price: 15,
+    image: "/mug-1.avif",
+    category: "Headwear"
+  },
+  {
+    id: 9,
+    name: "Acme Slip-on Shoes",
+    price: 45,
+    image: "/shoes-1.avif",
+    category: "Accessories"
+  },
+  {
+    id: 10,
+    name: "Acme Rainbow Stickers",
+    price: 4,
+    image: "/sticker-rainbow.avif",
+    category: "Footwear"
+  },
+  {
+    id: 11,
+    name: "Acme Cap",
+    price: 20,
+    image: "/hat-1.avif",
+    category: "Home"
+  },
+  {
+    id: 12,
+    name: "Acme Dog Sweater",
+    price: 20,
+    image: "/dog-sweater-1.avif",
+    category: "Accessories"
+  },
+  {
+    id: 13,
+    name: "Acme Cup",
+    price: 15,
+    image: "/cup-black.avif",
+    category: "Accessories"
+  },
+  {
+    id: 14,
+    name: "Acme Bomber Jacket",
+    price: 50,
+    image: "/bomber-jacket-army.avif",
+    category: "Accessories"
+  },
+  {
+    id: 15,
+    name: "Acme Baby Cap",
+    price: 10,
+    image: "/baby-cap-black.avif",
+    category: "Accessories"
+  },
+  {
+    id: 16,
+    name: "Acme Drawstring Bag",
+    price: 12,
+    image: "/bag-1-dark.avif",
+    category: "Accessories"
+  },
+  {
+    id: 17,
+    name: "Acme Pacifier",
+    price: 10,
+    image: "/pacifier-1.avif",
+    category: "Accessories"
+  },
+  {
+    id: 18,
+    name: "Acme Baby Onesie",
+    price: 10,
+    image: "/baby-onesie-beige-1.avif",
+    category: "Accessories"
+  },
 ];
+
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center bg-gray-100">
       <Header />
-      <main className="p-8 flex flex-row px-60 gap-10">
-        <div className="mb-8">
-          <p className="text-sm text-gray-400 font-bold mb-4">Collections</p>
-          <div className="flex flex-col gap-2 items-start text-sm">
-            <button className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">All</button>
-            <button className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Headwear</button>
-            <button className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Electronics</button>
-            <button className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Shirts</button>
-            <button className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Hoodies</button>
-          </div>
-        </div>
 
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <div key={product.id} className="border rounded-lg p-4 flex flex-col items-center">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded" />
-                <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-gray-600">${product.price}</p>
-              </div>
+      <main className="p-4 sm:p-8 flex flex-col md:flex-row gap-6 w-full max-w-[1440px]">
+        
+        {/* Left Sidebar: Collections */}
+        <div className="flex-shrink-0 mb-6 md:mb-0">
+          <p className="text-sm text-gray-400 font-bold mb-4">Collections</p>
+          <div className="flex flex-wrap md:flex-col gap-2 items-start text-sm">
+            {[
+              "All", "Bags", "Drinkware", "Electronics", "Footware", "Headwear",
+              "Hoodies", "Jackets", "Kids", "Pets", "Shirts", "Stickers"
+            ].map((cat) => (
+              <button
+                key={cat}
+                className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm"
+              >
+                {cat}
+              </button>
             ))}
           </div>
         </div>
+
+        {/* Middle: Products */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 flex-grow">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="cursor-pointer relative group bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-center items-center p-6 sm:p-8 md:p-10 h-full border border-transparent hover:border-blue-400 transition"
+            >
+              <div className="flex-grow flex justify-center items-center w-full">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="object-contain w-full h-auto max-h-[250px] sm:max-h-[300px] md:max-h-[350px] transition-transform duration-300 ease-in-out group-hover:scale-110"
+                />
+              </div>
+
+              <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 sm:px-3 sm:py-2 flex items-center gap-2 sm:gap-3 border border-gray-200">
+                <p className="text-xs sm:text-sm text-black font-medium">{product.name}</p>
+                <span className="text-xs sm:text-sm bg-blue-600 text-white font-semibold px-3 py-1 rounded-full">
+                  ${product.price}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex-shrink-0 mt-6 md:mt-0">
+          <p className="text-sm text-gray-400 font-bold mb-4">Sort by</p>
+          <div className="flex flex-wrap md:flex-col gap-2 items-start text-sm">
+            {["Relevance", "Trending", "Latest arrivals", "Price: Low to high", "Price: High to low"].map((sort) => (
+              <button
+                key={sort}
+                className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm"
+              >
+                {sort}
+              </button>
+            ))}
+          </div>
+        </div>
+
       </main>
+
       <Footer />
     </div>
+
   );
 }
