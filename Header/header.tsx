@@ -1,6 +1,6 @@
 "use client";
 import { Search, ShoppingCart } from "lucide-react";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 export default function Header() {
   const router = useRouter();
   return (
@@ -24,12 +24,12 @@ export default function Header() {
           <button
             onClick={() => router.push("/all")}
             className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">All</button>
-          <a href="#" className="hover:text-black border-b-2 border-transparent hover:border-black transition">
-            Shirts
-          </a>
-          <a href="#" className="hover:text-black border-b-2 border-transparent hover:border-black transition">
-            Stickers
-          </a>
+          <button
+            onClick={() => router.push("/all")}
+            className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Shirts</button>
+          <button
+            onClick={() => router.push("/all")}
+            className="hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer">Stickers</button>
         </nav>
       </div>
       <div className="w-full md:flex-1 flex justify-center order-last md:order-none">

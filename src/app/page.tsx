@@ -2,7 +2,7 @@
 import Header from "../../Header/header";
 import Footer from "../../Footer/footer";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 const products = [
   {
     id: 1,
@@ -49,20 +49,22 @@ const products = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="w-full flex flex-col bg-gray-100 min-h-screen">
       <Header />
-
       <main className="flex justify-center px-2 py-4">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-[1500px] mx-auto items-start">
-          <div className="relative group col-span-1 md:col-span-2 bg-white rounded-2xl overflow-hidden shadow-sm flex justify-center items-center h-full">
-            <Image
-              src={products[0].image}
-              alt={products[0].name}
-              width={550}
-              height={550}
-              className="object-contain w-full max-h-[300px] sm:max-h-[400px] md:max-h-[550px] transition-transform duration-300 ease-in-out group-hover:scale-105"
-            />
+          <div onClick={() => router.push("/product")} className="cursor-pointer relative group col-span-1 md:col-span-2 bg-white rounded-2xl overflow-hidden shadow-sm flex justify-center items-center h-full transition-all duration-200 hover:shadow-md hover:border-blue-400 border border-transparent">
+            <div className="relative w-full h-full overflow-hidden flex justify-center items-center">
+              <Image
+                src={products[0].image}
+                alt={products[0].name}
+                width={550}
+                height={550}
+                className="object-contain w-full max-h-[300px] sm:max-h-[400px] md:max-h-[550px] transition-transform duration-300 ease-in-out group-hover:scale-105 will-change-transform"
+              />
+            </div>
             <div className="flex justify-center items-center absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 md:left-20 bg-white/80 backdrop-blur-sm rounded-full px-2 py-2 gap-2 sm:gap-3 border border-gray-200">
               <p className="text-xs sm:text-sm text-black font-semibold">{products[0].name}</p>
               <span className="text-xs sm:text-sm bg-blue-600 text-white font-semibold px-3 py-1 rounded-full">
@@ -70,20 +72,20 @@ export default function Home() {
               </span>
             </div>
           </div>
-
           <div className="flex flex-col gap-4">
             {products.slice(1, 3).map((product) => (
               <div
+                onClick={() => router.push(`/product${product.id}`)}
                 key={product.id}
-                className="relative group bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 h-full"
+                className="cursor-pointer relative group bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 h-full transition-all duration-200 hover:shadow-md hover:border-blue-400 border border-transparent"
               >
-                <div className="flex-grow flex justify-center items-center">
+                <div className="flex-grow flex justify-center items-center w-full overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
                     width={300}
                     height={300}
-                    className="object-contain w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] transition-transform duration-300 ease-in-out group-hover:scale-105"
+                    className="object-contain w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[300px] transition-transform duration-300 ease-in-out group-hover:scale-105 will-change-transform"
                   />
                 </div>
                 <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white/80 backdrop-blur-sm rounded-full px-2 py-1 sm:px-2 sm:py-2 flex items-center gap-2 sm:gap-3 border border-gray-200">
@@ -97,19 +99,19 @@ export default function Home() {
           </div>
         </div>
       </main>
-
       <div className="relative overflow-x-scroll py-6">
         <div className="flex gap-6 w-max animate-marquee">
           {[...products.slice(3, 7), ...products.slice(3, 7)].map((product, idx) => (
             <div
+              onClick={() => router.push(`/product${product.id}`)}
               key={`${product.id}-${idx}`}
-              className="relative flex-shrink-0 w-96 sm:w-[26rem] md:w-[28rem] h-48 sm:h-60 md:h-64 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col justify-center items-center p-4 sm:p-6"
+              className="cursor-pointer hover:border-1 border-blue-400 relative flex-shrink-0 w-96 sm:w-[26rem] md:w-[28rem] h-48 sm:h-60 md:h-64 bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col justify-center items-center p-4 sm:p-6"
             >
-              <div className="flex-grow flex justify-center items-center">
+              <div className="flex-grow flex justify-center items-center w-full overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="object-contain w-full h-auto max-h-[150px] sm:max-h-[180px] md:max-h-[200px] transition-transform duration-300 ease-in-out group-hover:scale-105"
+                  className="object-contain w-full h-auto max-h-[150px] sm:max-h-[180px] md:max-h-[200px] transition-transform duration-300 ease-in-out hover:scale-105 will-change-transform"
                 />
               </div>
               <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center gap-2 sm:gap-3 border border-gray-200">
