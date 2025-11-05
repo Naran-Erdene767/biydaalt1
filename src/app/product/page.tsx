@@ -173,12 +173,6 @@ const Home = () => {
                             alt={`${selectedColor} t-shirt`}
                             className="object-contain w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
                         />
-                        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 cursor-pointer hover:bg-white">
-                            &#8592;
-                        </div>
-                        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 cursor-pointer hover:bg-white">
-                            &#8594;
-                        </div>
                     </div>
                     <div className="flex gap-3 justify-center mt-2">
                         {colors.map((color) => (

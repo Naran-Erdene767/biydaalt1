@@ -168,7 +168,6 @@ const products = [
 ];
 const Home = () => {
     const [selectedColor, setSelectedColor] = React.useState("black");
-    const [selectedSize, setSelectedSize] = React.useState("");
     const colors = ["black", "gray", "white"];
     const product = products[14];
     const getImage = (color: string) => product.images?.[color as keyof typeof product.images] ?? product.image;
@@ -184,12 +183,6 @@ const Home = () => {
                             alt={`${selectedColor} t-shirt`}
                             className="object-contain w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
                         />
-                        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 cursor-pointer hover:bg-white">
-                            &#8592;
-                        </div>
-                        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 cursor-pointer hover:bg-white">
-                            &#8594;
-                        </div>
                     </div>
                     <div className="flex gap-3 justify-center mt-2">
                         {colors.map((color) => (
@@ -232,11 +225,11 @@ const Home = () => {
                     </div>
                     <p className="text-gray-600">100% combed ringspun cotton</p>
                     <button
-                        className={`w-full py-4 rounded-full font-semibold text-white transition-colors duration-200 ${selectedColor && selectedSize
+                        className={`w-full py-4 rounded-full font-semibold text-white transition-colors duration-200 cursor-pointer ${selectedColor
                                 ? "bg-blue-600"
                                 : "bg-gray-400 cursor-not-allowed"
                             }`}
-                        disabled={!selectedColor || !selectedSize}
+                        disabled={!selectedColor}
                     >
                         Add to Cart
                     </button>

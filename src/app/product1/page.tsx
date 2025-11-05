@@ -126,11 +126,6 @@ const products = [
         image: "/baby-cap-black.avif",
         category: "Headwear",
         popularity: 58,
-        images: {
-            black: "baby-cap-black.avif",
-            gray: "baby-cap-gray.avif",
-            white: "baby-cap-white.avif",
-        }
     },
     {
         id: 16,
@@ -159,63 +154,43 @@ const products = [
         image: "/baby-onesie-beige-1.avif",
         category: "Kids",
         popularity: 72,
-        images: {
-            beige: "baby-onesie-beige-1.avif",
-            black: "baby-onesie-black-1.avif",
-            white: "baby-onesie-white-1.avif",
+        images:{
+            beige : "baby-onesie-beige-1.avif",
+            black : "baby-onesie-black-1.avif",
+            white : "baby-onesie-white-1.avif",
         }
     },
 ];
-const Home = () => {
-    const [selectedColor, setSelectedColor] = React.useState("black");
-    const [selectedSize, setSelectedSize] = React.useState("");
-    const colors = ["black"];
-    const product = products[7];
-    const getImage = (color: string) => product.images?.[color as keyof typeof product.images] ?? product.image;
-    return (
-        <div className="bg-gray-100 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 min-h-screen relative">
-            <Header />
+export default function Home() {
+  const product = products[0];
 
-            <div className="flex flex-col m-10 md:flex-row gap-10 p-6 max-w-[1400px] mx-auto bg-white shadow-lg rounded-xl">
-                <div className="flex flex-col gap-4 w-full md:w-1/2">
-                    <div className="relative w-full h-[500px] overflow-hidden flex justify-center items-center rounded-xl">
-                        <img
-                            src={getImage(selectedColor)}
-                            alt={`${selectedColor} t-shirt`}
-                            className="object-contain w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
-                        />
-                    </div>
-                    <div className="flex gap-3 justify-center mt-2">
-                        {colors.map((color) => (
-                            <div
-                                key={color}
-                                className={`w-20 h-20 rounded-lg overflow-hidden cursor-pointer border-2 ${selectedColor === color ? "border-blue-500" : "border-gray-200"
-                                    }`}
-                                onClick={() => setSelectedColor(color)}
-                            >
-                                <img
-                                    src={getImage(color)}
-                                    alt={`${color} t-shirt`}
-                                    className="object-contain w-full h-full"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="flex flex-col gap-6 w-full md:w-1/2">
-                    <h1 className="text-3xl font-bold">{product.name}</h1>
-                    <span className="text-white bg-blue-600 px-3 py-1 rounded-full w-max font-semibold">
-                        ${product.price} USD
-                    </span>
-                    <p className="text-gray-600">100% combed ringspun cotton</p>
-                    <button className="w-full py-4 rounded-full font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-            <Footer />
+  return (
+    <div className="bg-gray-100 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 min-h-screen relative">
+      <Header />
+
+      <div className="flex flex-col m-10 md:flex-row gap-10 p-6 max-w-[1400px] mx-auto bg-white shadow-lg rounded-xl">
+        <div className="flex flex-col gap-4 w-full md:w-1/2">
+          <div className="relative w-full h-[500px] overflow-hidden flex justify-center items-center rounded-xl">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="object-contain w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
+            />
+          </div>
         </div>
-    );
-};
 
-export default Home;
+        <div className="flex flex-col gap-6 w-full md:w-1/2">
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <span className="text-white bg-blue-600 px-3 py-1 rounded-full w-max font-semibold">
+            ${product.price} USD
+          </span>
+          <button className="cursor-pointer w-full py-4 rounded-full font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}

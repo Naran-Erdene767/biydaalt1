@@ -2,7 +2,7 @@
 import Header from "../../../Header/header";
 import Footer from "../../../Footer/footer";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const products = [
   {
     id: 1,
@@ -153,7 +153,7 @@ const products = [
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOption, setSortOption] = useState("Relevance");
-
+  const router = useRouter();
   const categories = [
     "All", "Bags", "Drinkware", "Electronics", "Footware", "Headwear",
     "Hoodies", "Jackets", "Kids", "Pets", "Shirts", "Stickers"
@@ -184,11 +184,10 @@ export default function Home() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm ${
-                  selectedCategory === cat
+                className={`hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm ${selectedCategory === cat
                     ? "border-black text-black font-medium"
                     : "text-gray-500"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -198,6 +197,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 flex-grow">
           {sortedProducts.map((product) => (
             <div
+              onClick={() => router.push(`/product${product.id}`)}
               key={product.id}
               className="cursor-pointer relative group bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-center items-center p-6 sm:p-8 md:p-10 h-full border border-transparent hover:border-blue-400 transition"
             >
@@ -233,11 +233,10 @@ export default function Home() {
               <button
                 key={sort}
                 onClick={() => setSortOption(sort)}
-                className={`hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm ${
-                  sortOption === sort
+                className={`hover:text-black border-b-2 border-transparent hover:border-black transition cursor-pointer text-xs sm:text-sm ${sortOption === sort
                     ? "border-black text-black font-medium"
                     : "text-gray-500"
-                }`}
+                  }`}
               >
                 {sort}
               </button>
